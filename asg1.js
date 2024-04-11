@@ -92,6 +92,7 @@ function addActionsForHtmlUI() {
   document.getElementById('triangleButton').onclick = function() {g_selectedType=TRIANGLE; updatePreview();}
   document.getElementById('circleButton').onclick = function() {g_selectedType=CIRCLE; updatePreview();}
   document.getElementById('ballButton').onclick = function() {instantiateBall();}
+  document.getElementById('peggleButton').onclick = function() {instantiatePeggle();}
 
   // Color sliders
   document.getElementById("redSlide").addEventListener('mouseup', function() {g_selectedColor[0] = this.value/100; updatePreview();});
@@ -121,9 +122,10 @@ function main() {
   // Specify the color for clearing <canvas>
   gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
+  // Game setup
   createPreview();
-
   instantiateBall();
+  createPeggleShapes();
 
   requestAnimationFrame(update);
 
@@ -176,12 +178,36 @@ var g_shapesList = [];
 var balls = [];
 function instantiateBall() {
   ball = new Ball();
-  ball.position = [.75, 1];
+  ball.type = "ball";
+  ball.position = [.02, .55];
   ball.color = g_selectedColor.slice();
   ball.size = 5;
   ball.segments = 10;
   g_shapesList.push(ball);
   balls.push(ball);
+}
+
+var peggle = [];
+var peggleDots = []
+var peggleDotColors = [[.8, .596, .086, 1.0], [.086, .322, .8, 1.0]]
+function createPeggleShapes() {
+  peggle.push(new Quadrilateral([-.4, -.5], [.851, .765, .125, 1.0], 10, 300));
+  peggle.push(new Quadrilateral([.4, -.5], [.851, .765, .125, 1.0], 10, 300));
+  peggle.push(new Quadrilateral([-1, -.5], [.851, .765, .125, 1.0], 10, 300));
+  peggle.push(new Quadrilateral([.95, -.5], [.851, .765, .125, 1.0], 10, 300));
+  peggle.push(new Circle([.02, .8], [.851, .765, .125, 1.0], 40, 10))
+  peggle.push(new Triangle([.02, .65], [.8, .596, .086, 1.0], 30, 1))
+  for (let i = 0; i < 25; i++) {
+    let circle = new Circle([(Math.random()-.5)*2, (Math.random()-.5)*2], 
+    peggleDotColors[Math.round(Math.random())].slice(), 15, 10);
+    peggle.push(circle);
+    peggleDots.push(circle);
+  }
+}
+
+function instantiatePeggle() {
+  peggleDots.forEach((dot) => dot.position = [(Math.random()-.5)*2, (Math.random()-.5)*2])
+  peggle.forEach((item) => g_shapesList.push(item));
 }
 
 function click(ev) {
@@ -203,6 +229,8 @@ function click(ev) {
   point.position = [x,y];
   point.color = g_selectedColor.slice();
   point.size = g_selectedSize;
+  point.width = g_selectedSize;
+  point.height = g_selectedSize;
   g_shapesList.push(point);
 }
 

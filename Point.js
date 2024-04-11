@@ -1,14 +1,12 @@
 class Point{
-    constructor() {
+    constructor(position, color, size) {
       this.type='point';
-      this.position = [0.0, 0.0, 0.0];
-      this.color = [1.0,1.0,1.0,1.0];
-      this.size = 5.0;
+      this.position = position;
+      this.color = color;
+      this.size = size;
+      this.width = size;
+      this.height = size;
       this.rotationMatrix = new Matrix4()
-    }
-
-    createBoundingBox() {
-
     }
   
     render() {

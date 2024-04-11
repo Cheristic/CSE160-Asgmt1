@@ -5,6 +5,10 @@
         <title>Painting</title>
         <style>
             body {text-align:left;}
+            h3 {
+                margin: 0;
+                padding: 0;
+            }
         </style>
     </head>
 
@@ -20,18 +24,22 @@
         <script src="Triangle.js"></script>
         <script src="Circle.js"></script>
         <script src="Ball.js"></script>
+        <script src="Quadrilateral.js"></script>
         <script src="asg1.js"></script>
 
         <br>
         <button type="button" id="clearButton">Clear</button>
 
-        <br><br>
-        <button type="button" id="pointButton">Point</button>
-        <button type="button" id="triangleButton">Triangle</button>
-        <button type="button" id="circleButton">Circle</button>
-        <button type="button" id="ballButton">Ball</button>
+
 
         <br><br>
+        <h3>Games!</h3>
+        <button type="button" id="ballButton">Ball</button>
+        <button type="button" id="peggleButton">Peggle</button>
+        <br> Play peggle by trying to keep the jank balls in play
+
+        <br><br>
+        <h3>Colors!</h3>
         Red <input type="range" min="0" max="100" value="100" class="slider" id="redSlide">
         <br>
         Green <input type="range" min="0" max="100" value="100" class="slider" id="greenSlide">
@@ -39,12 +47,18 @@
         Blue <input type="range" min="0" max="100" value="100" class="slider" id="blueSlide">
         
         <p>
+        <h3>Shape Settings!</h3>
+        <button type="button" id="pointButton">Point</button>
+        <button type="button" id="triangleButton">Triangle</button>
+        <button type="button" id="circleButton">Circle</button>
+
+        <br>
         Shape Size <input type="range" min="5" max="40" value="15" class="slider" id="shapeSize">
         
-        <br><br>
+        <br>
         Circle Segment Count <input type="range" min="6" max="20" value="15" class="slider" id="circleSegmentCount">
 
-        <br><br>
+        <br>
         Triangle Type <select name="triangleType" id="triangleType">
             <option value="0">Equilateral-Up</option>
             <option value="1">Equilateral-Down</option>
@@ -54,6 +68,5 @@
 
         <p>
         <img src="reference.jpg" width="484" height="456">
-        <img src="results.png" width="350" height="600">
     </body>
 </html>

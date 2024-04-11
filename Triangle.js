@@ -1,11 +1,13 @@
 class Triangle{
-    constructor() {
+    constructor(position, color, size, type) {
       this.type='triangle';
-      this.position = [0.0, 0.0, 0.0];
-      this.color = [1.0,1.0,1.0,1.0];
-      this.size = 5.0;
+      this.position = position;
+      this.color = color;
+      this.size = size;
+      this.width = size;
+      this.height = size;
       this.rotationMatrix = new Matrix4()
-      this.triangleType = 0;
+      this.triangleType = type;
     }
   
     render() {

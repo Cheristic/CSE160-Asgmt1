@@ -1,10 +1,12 @@
 class Circle{
-    constructor() {
+    constructor(position, color, size, segments) {
       this.type='circle';
-      this.position = [0.0, 0.0, 0.0];
-      this.color = [1.0,1.0,1.0,1.0];
-      this.size = 5.0;
-      this.segments = 10;
+      this.position = position;
+      this.color = color;
+      this.size = size;
+      this.segments = segments;
+      this.width = size;
+      this.height = size;
       this.rotationMatrix = new Matrix4()
     }
   

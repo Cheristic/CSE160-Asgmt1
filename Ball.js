@@ -4,7 +4,7 @@ class Ball extends Circle{
       super();
       this.type = "ball"
       this.speed = 15;
-      this.direction = [-.78, -1];
+      this.direction = [(Math.random()-.5)*2, (Math.random())*.1 - 1];
       this.BOUNDS = 1;
 
       this.dirBool = [false, false];
@@ -19,12 +19,12 @@ class Ball extends Circle{
     var len = g_shapesList.length;
     for(var i = 0; i < len; i++) {
       let shape = g_shapesList[i];
-      if (shape.type == 'ball') continue;
+      if (shape.type == "ball") continue;
 
-      if (shape.position[0] + shape.size/400 >= this.position[0] - this.size/200 &&
-          shape.position[0] - shape.size/400 <= this.position[0] + this.size/200 &&
-          shape.position[1] + shape.size/400 >= this.position[1] - this.size/200 &&
-          shape.position[1] - shape.size/400 <= this.position[1] + this.size/200) {
+      if (shape.position[0] + shape.width/400 >= this.position[0] - this.size/200 &&
+          shape.position[0] - shape.width/400 <= this.position[0] + this.size/200 &&
+          shape.position[1] + shape.height/400 >= this.position[1] - this.size/200 &&
+          shape.position[1] - shape.height/400 <= this.position[1] + this.size/200) {
             // collision detected, return direction
             let xdiff = shape.position[0] - this.position[0];
             let ydiff = shape.position[1] - this.position[1];
